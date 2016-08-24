@@ -1,0 +1,88 @@
+jobs:
+  - name: gh-man
+    type: manifest
+    steps:
+      - IN: gh-image
+        pull: false
+      - IN: gh-opts
+      - IN: gh-params
+        applyTo:
+          - gh-image
+      - TASK: managed
+      - IN: trigger-gh-man
+    on_success:
+      - script: echo 'this is on_success step of dv-man of type manifest'
+    on_failure:
+      - script: echo 'this is on_failure step of dv-man of type manifest'
+    
+
+  - name: gh-man-versionName
+    type: manifest
+    steps:
+      - IN: gh-image
+        pull: false
+        versionName: latest
+      - IN: gh-opts
+      - IN: gh-params
+        applyTo:
+          - gh-image
+      - TASK: managed
+      - IN: trigger-gh-man
+
+  - name: gh-man-versionNumber
+    type: manifest
+    steps:
+      - IN: gh-image
+        pull: false
+        versionNumber: 1
+      - IN: gh-opts
+      - IN: gh-params
+        applyTo:
+          - gh-image
+      - TASK: managed
+      - IN: trigger-gh-man
+
+  - name: gh-test
+    type: deploy
+    on_start:
+      - NOTIFY: slackNotification
+    steps:
+      - IN: gh-man
+      - IN: gh-aws
+      - TASK: managed
+        deployMethod: upgrade
+    on_success:
+      - NOTIFY: slackNotification
+    on_failure:
+      - NOTIFY: slackNotification
+
+  
+
+  - name: gh-release-one
+    type: release
+    steps:
+      - IN: gh-version-resource
+      - IN: gh-man
+      - TASK: managed
+        bump: major
+
+  
+
+  - name: gh-provision
+    type: runSh
+    steps:
+      - IN: gh-repo
+      - TASK:
+        - script: ls
+       
+    on_success:
+      - script: echo 'This block executes after TASK section executes successfully'
+      - NOTIFY: slackNotifcation
+
+  - name: build-gh-image
+    type: runSh
+    steps:
+      - IN: gh-repo
+      - TASK:
+        - script: "echo 'versionName=latest' > /build/state/dv-image.env"
+      - OUT: dv-image
