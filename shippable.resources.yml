@@ -50,7 +50,7 @@ resources:
   
   - name: gh-repo
     type: gitRepo
-    integration: github
+    integration: gh
     pointer:
       sourceName: qhstest01/test-scripts
       branch: master
