@@ -85,4 +85,4 @@ jobs:
       - IN: gh-repo
       - TASK:
         - script: "echo 'versionName=latest' > /build/state/dv-image.env"
-      - OUT: dv-image
+      - OUT: gh-image
