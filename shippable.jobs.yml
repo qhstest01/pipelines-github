@@ -45,16 +45,16 @@ jobs:
   - name: gh-test
     type: deploy
     on_start:
-      - NOTIFY: slackNotification
+      - NOTIFY: gh-slack
     steps:
       - IN: gh-man
       - IN: gh-aws
       - TASK: managed
         deployMethod: upgrade
     on_success:
-      - NOTIFY: slackNotification
+      - NOTIFY: gh-slack
     on_failure:
-      - NOTIFY: slackNotification
+      - NOTIFY: gh-slack
 
   
 
@@ -77,7 +77,7 @@ jobs:
        
     on_success:
       - script: echo 'This block executes after TASK section executes successfully'
-      - NOTIFY: slackNotifcation
+      - NOTIFY: gh-slack
 
   - name: build-gh-image
     type: runSh
