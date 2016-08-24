@@ -1,0 +1,78 @@
+resources:
+  - name: gh-imag
+    type: image
+    integration: ship-dock12
+    pointer:
+      sourceName: "library/nginx"
+    seed:
+      versionName: latest
+
+  - name: gh-opts
+    type: dockerOptions
+    version:
+      memory: 64
+      cpuShares: 256
+      portMappings:
+        - "80:80"
+
+  - name: gh-params
+    type: params
+    version:
+      params:
+        MONGO_API_URL: "localhost:28017"
+    flags:
+      - dv
+
+  
+  - name: gh-aws
+    type: cluster
+    integration: aws-deploy
+    pointer:
+      sourceName : "testCL" #name of the cluster we are deploying
+      region: "us-west-2"
+
+  
+
+  - name: gh-scaler
+    type: replicas
+    version:
+      count: 1
+    flags:
+      - replicas
+
+
+
+  - name: gh-version-resource
+    type: version
+    seed:
+      versionName: "0.0.1-gh"
+
+  
+  - name: gh-repo
+    type: gitRepo
+    integration: github
+    pointer:
+      sourceName: qhstest01/test-scripts
+      branch: master
+
+  # This time resource posts new versions for it, every 2 minutes
+  - name: gh-nightly
+    type: time
+    seed:
+      interval: "*/2 * * * *"
+    flags:
+      - nightly
+
+  - name: gh-slack
+    type: notification
+    integration: ship-slack
+    pointer:
+      recipients:
+        - "pvt2"
+        
+  - name: gh-myEmail
+    type: notification
+    pointer:
+      method: email
+      recipients: 
+        -  "vidya@shippable.com"
