@@ -1,0 +1,5 @@
+triggers:
+   - name: trigger-gh-man
+     type: trigger
+     version:
+       counter: 1
