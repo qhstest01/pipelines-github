@@ -1,5 +1,5 @@
 resources:
-  - name: gh-imag
+  - name: gh-image
     type: image
     integration: ship-dock12
     pointer:
