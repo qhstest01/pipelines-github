@@ -4,7 +4,7 @@ jobs:
     steps:
       - IN: gh-image
         pull: false
-      - IN: pipelines-github
+      - IN:  gh-doptions
       - IN: gh-params
         applyTo:
           - gh-image
@@ -49,6 +49,7 @@ jobs:
     steps:
       - IN: gh-man
       - IN: gh-aws
+      - IN: gh-doptions
       - IN: gh-params
       - TASK: managed
         deployMethod: upgrade
