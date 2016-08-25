@@ -22,6 +22,14 @@ resources:
         MONGO_API_URL: "localhost:28017"
     flags:
       - dv
+      
+  - name: gh-params
+    type: params
+    version:
+      params:
+        test: "localhost:28017"
+    flags:
+      - dv
 
   
   - name: gh-aws
