@@ -7,14 +7,22 @@ resources:
     seed:
       versionName: latest
 
-  - name: pipelines-github
+  - name: gh-doptions
     type: dockerOptions
     version:
       memory: 64
       cpuShares: 256
       portMappings:
         - "80:80"
-
+ 
+  - name: gh-doptions
+    type: dockerOptions
+    version:
+      memory: 50
+      cpuShares: 100
+      portMappings:
+        - "50:10"
+        
   - name: gh-params
     type: params
     version:
