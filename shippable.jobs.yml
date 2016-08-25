@@ -4,7 +4,7 @@ jobs:
     steps:
       - IN: gh-image
         pull: false
-      - IN:  gh-doptions
+      - IN: gh-doptions
       - IN: gh-params
         applyTo:
           - gh-image
@@ -22,7 +22,7 @@ jobs:
       - IN: gh-image
         pull: false
         versionName: latest
-      - IN: gh-opts
+      - IN: gh-doptions
       - IN: gh-params
         applyTo:
           - gh-image
@@ -35,7 +35,7 @@ jobs:
       - IN: gh-image
         pull: false
         versionNumber: 1
-      - IN: gh-opts
+      - IN: gh-doptions
       - IN: gh-params
         applyTo:
           - gh-image
