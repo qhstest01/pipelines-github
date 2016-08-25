@@ -6,6 +6,14 @@ resources:
       sourceName: "library/nginx"
     seed:
       versionName: latest
+      
+  - name: gh-image
+    type: image
+    integration: ship-dock12
+    pointer:
+      sourceName: "library/ubuntu"
+    seed:
+      versionName: latesttest
 
   - name: gh-doptions
     type: dockerOptions
