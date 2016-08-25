@@ -42,13 +42,14 @@ jobs:
       - TASK: managed
       - IN: trigger-gh-man
 
-  - name: gh-test
+  - name: gh-test-aws
     type: deploy
     on_start:
       - NOTIFY: gh-slack
     steps:
       - IN: gh-man
       - IN: gh-aws
+      - IN: gh-params
       - TASK: managed
         deployMethod: upgrade
     on_success:
