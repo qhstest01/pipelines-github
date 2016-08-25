@@ -1,5 +1,5 @@
 jobs:
-  - name: gh-man
+  - name: gh-man1
     type: manifest
     steps:
       - IN: gh-image
@@ -47,7 +47,7 @@ jobs:
     on_start:
       - NOTIFY: gh-slack
     steps:
-      - IN: gh-man
+      - IN: gh-man1
       - IN: gh-aws
       - IN: gh-doptions
       - IN: gh-params
