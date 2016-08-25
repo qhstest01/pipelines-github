@@ -5,7 +5,7 @@ resources:
     type: image
     integration: ship-dock12
     pointer:
-      sourceName: "library/ubuntu"
+      sourceName: "shiphitchcock2/docker-node-test"
     seed:
       versionName: latesttest
       
