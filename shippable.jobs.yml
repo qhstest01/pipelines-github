@@ -4,7 +4,7 @@ jobs:
     steps:
       - IN: gh-image
         pull: false
-      - IN: gh-opts
+      - IN: pipelines-github
       - IN: gh-params
         applyTo:
           - gh-image
