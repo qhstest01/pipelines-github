@@ -7,7 +7,7 @@ resources:
     seed:
       versionName: latest
 
-  - name: gh-opts
+  - name: pipelines-github
     type: dockerOptions
     version:
       memory: 64
