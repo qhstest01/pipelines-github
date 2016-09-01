@@ -64,7 +64,7 @@ jobs:
     type: release
     steps:
       - IN: gh-version-resource
-      - IN: gh-man
+      - IN: gh-man1
       - TASK: managed
         bump: major
 
