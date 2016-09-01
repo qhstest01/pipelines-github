@@ -53,10 +53,10 @@ jobs:
       - IN: gh-params
       - TASK: managed
         deployMethod: upgrade
-    on_success:
-      - NOTIFY: gh-slack
-    on_failure:
-      - NOTIFY: gh-slack
+    #on_success:
+      #- NOTIFY: gh-slack
+  #  on_failure:
+      #- NOTIFY: gh-slack
 
   
 
