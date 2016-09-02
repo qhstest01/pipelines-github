@@ -9,7 +9,7 @@ resources:
     seed:
       versionName: latesttest
       
-  - name: gh-image
+  - name: gh-image2
     type: image
     integration: ship-dock12
     pointer:
@@ -25,7 +25,7 @@ resources:
       portMappings:
         - "80:80"
  
-  - name: gh-doptions
+  - name: gh-doptions2
     type: dockerOptions
     version:
       memory: 50
